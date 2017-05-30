@@ -85,9 +85,7 @@ while read name; do
 	RESULT=$(curl -G "$URL" \
 	--data-urlencode "part=snippet" \
 	--data-urlencode "key=$TOKEN" \
-	--data-urlencode "q=$name" \
-	--header 'cache-control: no-cache' \
-	--header 'postman-token: 4539b3fa-31a5-8adb-7200-16d32d0b4827')
+	--data-urlencode "q=$name" )
 
 	ID=$(echo $RESULT | jq -r '.items[0]["id"]["videoId"]')
 	TITLE=$(echo $RESULT | jq -r '.items [0]["snippet"]["title"]' | xargs)
